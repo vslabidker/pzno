@@ -41,7 +41,7 @@ def calculate_word_percentages(file_path):
     with open(file_path, 'r', encoding='utf-8') as file:
         text = file.read()
 
-    # Разделяем текст на слова, убирая знаки пунктуации
+    # Разделяем текст на слова, убирая пробелы, знаки пунктуации, если такие присутствуют
     words = [word.strip(' .,!?;:()[]\'"') for word in text.split()]
     total_words = len(words)
 
@@ -58,8 +58,6 @@ def calculate_word_percentages(file_path):
 
     return short_words_percent, long_words_percent
 
-
-# Пример использования
 file_path = 'input.txt'  # Путь к файлу
 short_percent, long_percent = calculate_word_percentages(file_path)
 
