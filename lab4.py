@@ -69,34 +69,27 @@ print(cond7.to_string())
 
 ## Task 3
 
-# Загрузка данных из файлов
 students1 = pd.read_csv('students1.txt', delimiter='\t')
 students2 = pd.read_csv('students2.txt', delimiter='\t')
 students3 = pd.read_csv('students3.txt', delimiter='\t')
 
-# Преобразуем недостающие значения в NaN для корректной обработки
 students1.replace(['*', ''], pd.NA, inplace=True)
 students2.replace(['*', ''], pd.NA, inplace=True)
 students3.replace(['*', ''], pd.NA, inplace=True)
 
-# Объединение таблиц
 students = pd.merge(students1, students2, on="Name", how="outer")
 students = pd.merge(students, students3, on="Name", how="outer")
 
-# Выбор оценок по предметам для задачи 1 и вычисление коэффициентов корреляции
 math_analysis = students[['Математичний аналіз1', 'Математичний аналіз2', 'Математичний аналіз3']].astype(float)
 corr_math_analysis = math_analysis.corr()
 
-# Выбор оценок по предметам для задачи 2 и вычисление коэффициентов корреляции
 history_ml = students[['Історія України', 'Машинне навчання']].astype(float)
 corr_history_ml = history_ml.corr()
 
-# Вывод результатов
 print("Коэффициенты корреляции между оценками по математическому анализу (попарно):")
 print(corr_math_analysis)
 print("\nКоэффициент корреляции между Историей Украины и Машинным обучением:")
 print(corr_history_ml)
-
 
 ## Task 4
 
