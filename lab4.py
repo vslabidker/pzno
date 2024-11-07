@@ -86,10 +86,11 @@ corr_math_analysis = math_analysis.corr()
 history_ml = students[['Історія України', 'Машинне навчання']].astype(float)
 corr_history_ml = history_ml.corr()
 
-print("Коэффициенты корреляции между оценками по математическому анализу):")
-print(corr_math_analysis)
+print("Коэффициенты корреляции между оценками по математическому анализу:")
+print(corr_math_analysis.to_string())
 print("\nКоэффициент корреляции между Историей Украины и Машинным обучением:")
-print(corr_history_ml)
+print(corr_history_ml.to_string())
+
 
 ## Task 4
 
@@ -107,7 +108,8 @@ min_distance_flights = flights_df[flights_df['Distance'] == min_distance]
 unique_flights_with_min_distance = min_distance_flights['FlightNum'].unique()
 other_days_min_distance_flights = flights_df[flights_df['FlightNum'].isin(unique_flights_with_min_distance)]
 
-print(min_distance_flights[['FlightNum', 'Year', 'Month', 'DayofMonth', 'Distance']], other_days_min_distance_flights[['FlightNum', 'Year', 'Month', 'DayofMonth', 'Distance']].drop_duplicates())
+print(min_distance_flights[['FlightNum', 'Year', 'Month', 'DayofMonth', 'Distance']],
+      other_days_min_distance_flights[['FlightNum', 'Year', 'Month', 'DayofMonth', 'Distance']].drop_duplicates())
 
 flights_by_month = flights_df['Month'].value_counts().idxmax()
 print(f'Месяц с наибольшим количеством полетов: {flights_by_month}')
@@ -127,4 +129,5 @@ max_dep_delay_info = {
     'day': max_dep_delay_flight['DayofMonth']
 }
 
-print(top_5_destinations_with_cities.to_string(), max_dep_delay_info)
+print(f' 5 наиболее популярных мест назначения в декабре: \n{top_5_destinations_with_cities.to_string()} '
+      f' \nАэропорт, в котором была наибольшая задержка при вылете:\n {max_dep_delay_info}')
