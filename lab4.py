@@ -86,7 +86,7 @@ corr_math_analysis = math_analysis.corr()
 history_ml = students[['Історія України', 'Машинне навчання']].astype(float)
 corr_history_ml = history_ml.corr()
 
-print("Коэффициенты корреляции между оценками по математическому анализу (попарно):")
+print("Коэффициенты корреляции между оценками по математическому анализу):")
 print(corr_math_analysis)
 print("\nКоэффициент корреляции между Историей Украины и Машинным обучением:")
 print(corr_history_ml)
