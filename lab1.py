@@ -1,4 +1,40 @@
 import numpy as np
+##Task 1
+def calculate_e(epsilon):
+    x = 1  
+    prev_l = 0  
+    
+    while True:
+        current_l = (1 + x) ** (1 / x)
+        if abs(current_l - prev_l) < epsilon:
+            return current_l
+        prev_l = current_l
+        x /= 2  
+        
+epsilon = 1e-6 
+e_approx = calculate_e(epsilon)
+print(f"Число e с точностью {epsilon}: {e_approx}")
+
+##Task 2
+def process_phone_number(phone_number):
+    digits = list(str(phone_number))
+    for i in range(len(digits) - 1, -1, -1):
+        if int(digits[i]) % 2 != 0:  
+            result_number = int("".join(digits[:i + 1]))
+            return result_number
+def is_prime(num):
+    if num < 2:
+        return False
+    for i in range(2, int(num**0.5) + 1):
+        if num % i == 0:
+            return False
+    return True
+    
+phone_number = 123456789 
+result = process_phone_number(phone_number)
+print(f"Результирующее число: {result}")
+print(f"Является простым:{is_prime(result)}")
+
 
 ##Task 3
 
